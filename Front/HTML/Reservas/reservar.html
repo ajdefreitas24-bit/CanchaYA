@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <title>Datos del jugador — CanchaYA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/workflow.css">
+    <script src="/JS/reservar.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header workflow-header">
+      <a class="brand" href="/" aria-label="CanchaYA, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>cancha<span class="brand-accent">YA</span></span></a>
+      <span class="header-note"><span class="live-dot"></span> Tus horarios están apartados temporalmente</span>
+    </header>
+    <main class="workflow-page">
+      <a class="back-link" href="/" id="back-link">← Volver a fechas y horarios</a>
+      <div class="eyebrow"><span class="eyebrow-line"></span> PASO 2 DE 3 · DATOS DEL JUGADOR</div>
+      <h1>Completa tu <span>reserva.</span></h1>
+      <p class="workflow-lead">Déjanos tus datos para continuar con el pago del anticipo.</p>
+      <section class="workflow-summary" id="reservation-summary" aria-live="polite">
+        <p class="loading-message">Cargando los detalles de tus horarios...</p>
+      </section>
+      <form class="workflow-form" id="reservation-form" novalidate>
+        <div class="form-heading"><span class="section-kicker">INFORMACIÓN DE CONTACTO</span><h2>¿Quién organiza el partido?</h2></div>
+        <div class="form-grid">
+          <label class="form-field" for="nombre">Nombre y apellido
+            <input id="nombre" name="nombre" autocomplete="name" maxlength="80" required>
+            <small class="field-error" id="error-nombre" hidden></small>
+          </label>
+          <label class="form-field" for="cedula">Cédula de identidad
+            <input id="cedula" name="cedula" inputmode="numeric" autocomplete="off" maxlength="10" required>
+            <small class="field-error" id="error-cedula" hidden></small>
+          </label>
+          <label class="form-field" for="correo">Correo electrónico
+            <input id="correo" name="correo" type="email" autocomplete="email" maxlength="120" required>
+            <small class="field-error" id="error-correo" hidden></small>
+          </label>
+          <label class="form-field" for="telefono">Teléfono
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" maxlength="18" required>
+            <small class="field-error" id="error-telefono" hidden></small>
+          </label>
+          <label class="form-field" for="jugadores">Cantidad de jugadores
+            <input id="jugadores" name="jugadores" type="number" inputmode="numeric" min="1" step="1" required>
+            <small class="field-error" id="error-jugadores" hidden></small>
+          </label>
+        </div>
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+        <div class="form-actions">
+          <button class="secondary-button" id="cancel-reservation" type="button">Cancelar</button>
+          <button class="primary-button" id="submit-reservation" type="submit">Continuar al pago <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </main>
+    <footer class="site-footer"><span>© 2026 CANCHAYA</span><span>MENOS COORDINAR. MÁS JUGAR.</span><span>HECHO PARA EL JUEGO <span class="footer-star">✳</span></span></footer>
+  </body>
+</html>

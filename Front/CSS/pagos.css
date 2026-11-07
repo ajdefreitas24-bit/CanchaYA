@@ -1,0 +1,28 @@
+.payment-page { max-width: 760px; }
+.payment-content { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; align-items: start; }
+.payment-details, .payment-form { min-width: 0; }
+.payment-details .form-heading { margin-bottom: 15px; }
+.payment-details .form-heading h2 { font-size: 18px; }
+.bank-details { margin: 0; padding: 15px 16px; border: 1px solid var(--line); background: white; }
+.bank-details > div { padding: 8px 0; display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid #eef0eb; }
+.bank-details > div:last-child { border-bottom: 0; }
+.bank-details dt { color: #78827b; font-size: 10px; }
+.bank-details dd { margin: 0; color: var(--ink); font-size: 10px; font-weight: 700; text-align: right; overflow-wrap: anywhere; }
+.advance-card { margin-top: 15px; padding: 16px; display: grid; gap: 5px; background: #eaf1e4; }
+.advance-card .section-kicker { margin: 0; }
+.advance-card strong { color: var(--green); font: 800 29px var(--font-display); letter-spacing: -.8px; }
+.advance-card small { color: #78827b; font-size: 9px; }
+.upload-field { min-height: 194px; padding: 22px 18px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 9px; border: 1px dashed #9aae9c; background: white; text-align: center; cursor: pointer; }
+.upload-field:hover { border-color: var(--green); background: #fbfcf9; }
+.upload-icon { width: 35px; height: 35px; display: grid; place-items: center; border-radius: 50%; background: #edf3e9; color: var(--green); font-size: 22px; }
+.upload-field strong { font: 700 13px var(--font-display); }
+.upload-field > span:nth-of-type(2) { color: #89938b; font-size: 9px; }
+.upload-field input { width: 100%; max-width: 210px; color: #78827b; font-size: 10px; }
+.selected-file { min-height: 16px; margin: 8px 0 0; color: #647169; font-size: 10px; overflow-wrap: anywhere; }
+.submit-payment { width: 100%; margin-top: 9px; }
+.waiting-page { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
+.waiting-message { max-width: 650px; color: var(--ink); font: 600 clamp(20px, 4vw, 29px)/1.55 var(--font-display); letter-spacing: -.7px; text-align: center; }
+@media (max-width: 650px) {
+  .payment-content { grid-template-columns: 1fr; gap: 22px; }
+  .upload-field { min-height: 160px; }
+}

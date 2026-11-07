@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <meta name="description" content="Encuentra y consulta la disponibilidad de canchas deportivas con CanchaYA.">
+    <title>CanchaYA — Tu próximo juego empieza aquí</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <script src="/JS/app.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="CanchaYA, inicio">
+        <span class="brand-mark" aria-hidden="true">C</span>
+        <span>cancha<span class="brand-accent">YA</span></span>
+      </a>
+      <div class="header-right">
+        <span class="header-note"><span class="live-dot"></span> Deporte, a tu manera</span>
+        <button class="text-button" id="home-button" type="button" hidden>Volver al inicio</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="view landing-view" id="landing-view">
+        <div class="landing-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> Juega más. Organiza menos.</div>
+          <h1>Tu próximo<br>juego empieza <span>aquí.</span></h1>
+          <p>Encuentra una cancha, elige cuándo y reúne a tu equipo. Así de fácil.</p>
+          <div class="landing-decoration" aria-hidden="true">
+            <span class="decoration-ball">⚽</span>
+            <span class="decoration-copy">El plan<br>se arma<br>jugando.</span>
+            <span class="decoration-spark">✳</span>
+          </div>
+        </div>
+        <div class="role-panel">
+          <div class="panel-topline"><span>BIENVENIDO A CANCHAYA</span><span class="panel-index">01 / 02</span></div>
+          <h2>¿Cómo quieres<br>entrar?</h2>
+          <p class="panel-description">Elige tu perfil para continuar.</p>
+          <button class="role-card" id="player-entry" type="button">
+            <span class="role-icon player-icon" aria-hidden="true">↗</span>
+            <span class="role-copy"><strong>Entrar como jugador</strong><small>Encuentra tu cancha y arma el partido</small></span>
+            <span class="role-arrow" aria-hidden="true">→</span>
+          </button>
+          <button class="role-card" id="admin-entry" type="button">
+            <span class="role-icon admin-icon" aria-hidden="true">⌘</span>
+            <span class="role-copy"><strong>Entrar como administrador</strong><small>Gestiona tus espacios deportivos</small></span>
+            <span class="role-arrow" aria-hidden="true">→</span>
+          </button>
+          <div class="panel-footnote"><span aria-hidden="true">✦</span> Un buen partido empieza con un buen lugar.</div>
+        </div>
+        <div class="landing-footer"><span>HECHO PARA QUIENES NO SE QUEDAN QUIETOS</span><span>CARACAS · VENEZUELA</span></div>
+      </section>
+
+      <section class="view dashboard-view" id="player-view" hidden>
+        <div class="dashboard-intro">
+          <div class="eyebrow"><span class="eyebrow-line"></span> ÁREA DE JUGADOR</div>
+          <h1>¿Listo para<br>el <span>próximo partido?</span></h1>
+          <p>Tu cancha ideal está a solo unos pasos.</p>
+        </div>
+        <div class="dashboard-card">
+          <span class="dashboard-card-icon" aria-hidden="true">⚽</span>
+          <div>
+            <span class="card-kicker">ENCUENTRA TU LUGAR</span>
+            <h2>Reservar canchas</h2>
+            <p>Explora deportes, conoce las canchas y revisa sus horarios disponibles.</p>
+          </div>
+          <button class="primary-button" id="open-booking" type="button">Buscar cancha <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="dashboard-caption"><span class="live-dot"></span> <span id="catalog-summary">Deportes y canchas para tu próximo partido</span></div>
+      </section>
+
+      <section class="view dashboard-view admin-view" id="admin-view" hidden>
+        <div class="eyebrow"><span class="eyebrow-line"></span> ÁREA DE ADMINISTRADOR</div>
+        <h1>Hola, <span>administrador.</span></h1>
+        <div class="notice-card">
+          <span class="notice-icon" aria-hidden="true">⌘</span>
+          <div><h2>Esta área estará disponible pronto</h2><p>La gestión de complejos y canchas todavía no está habilitada.</p></div>
+        </div>
+      </section>
+
+      <section class="view booking-view" id="booking-view" hidden>
+        <div class="booking-heading">
+          <div>
+            <div class="eyebrow"><span class="eyebrow-line"></span> RESERVA TU CANCHA</div>
+            <h1>Elige tu próximo <span>juego.</span></h1>
+            <p>Encuentra un deporte, explora las canchas y consulta sus horarios.</p>
+          </div>
+          <div class="booking-stamp"><span>CANCHAYA</span><strong>01—03</strong><small>ENCUENTRA · ELIGE · JUEGA</small></div>
+        </div>
+
+        <div class="step-indicator" aria-label="Pasos para consultar canchas">
+          <div class="step active" id="step-sport"><span>01</span> Deporte</div>
+          <span class="step-connector"></span>
+          <div class="step" id="step-court"><span>02</span> Cancha</div>
+          <span class="step-connector"></span>
+          <div class="step" id="step-date"><span>03</span> Fecha y hora</div>
+        </div>
+
+        <section class="booking-section" aria-labelledby="sports-heading">
+          <div class="section-title">
+            <div><span class="section-kicker">PRIMERO LO PRIMERO</span><h2 id="sports-heading">¿Qué deporte te provoca?</h2></div>
+            <span class="section-count" id="sport-count">Cargando...</span>
+          </div>
+          <div class="sports-grid" id="sports-list" aria-live="polite"></div>
+        </section>
+
+        <section class="booking-section secondary-section" id="courts-section" hidden aria-labelledby="courts-heading">
+          <div class="section-title">
+            <div><span class="section-kicker">UN LUGAR PARA JUGAR</span><h2 id="courts-heading">Elige tu cancha</h2></div>
+            <button class="text-button" id="change-sport" type="button">← Cambiar deporte</button>
+          </div>
+          <div class="courts-grid" id="courts-list"></div>
+        </section>
+
+        <section class="booking-section details-section" id="details-section" hidden aria-labelledby="details-heading">
+          <div class="section-title">
+            <div><span class="section-kicker">DETALLES DE LA CANCHA</span><h2 id="details-heading">Escoge cuándo jugar</h2></div>
+            <button class="text-button" id="change-court" type="button">← Cambiar cancha</button>
+          </div>
+          <article class="court-summary" id="court-summary"></article>
+          <div class="calendar-heading">
+            <div><span class="section-kicker">ELIGE UN DÍA</span><h3>Próximos 30 días</h3></div>
+            <div class="calendar-controls">
+              <button class="calendar-arrow" id="previous-dates" type="button" aria-label="Ver los siete días anteriores">←</button>
+              <span id="calendar-range"></span>
+              <button class="calendar-arrow" id="next-dates" type="button" aria-label="Ver los próximos siete días">→</button>
+            </div>
+          </div>
+          <div class="dates-grid" id="dates-list" aria-label="Fechas disponibles"></div>
+          <div class="availability-heading">
+            <div><span class="section-kicker">HORARIOS DISPONIBLES</span><h3 id="availability-date"></h3></div>
+            <span class="availability-note"><span class="live-dot"></span> Horas a partir de 2 h desde ahora</span>
+          </div>
+          <div class="slots-grid" id="slots-list" aria-live="polite"></div>
+          <div class="selection-actions" id="selection-actions" hidden>
+            <p class="selection-message" id="selection-message" role="status"></p>
+            <button class="primary-button" id="confirm-selection" type="button">Confirmar horarios <span aria-hidden="true">→</span></button>
+          </div>
+        </section>
+        <p class="error-message" id="error-message" role="alert" hidden></p>
+      </section>
+    </main>
+
+    <footer class="site-footer"><span>© 2026 CANCHAYA</span><span>MENOS COORDINAR. MÁS JUGAR.</span><span>HECHO PARA EL JUEGO <span class="footer-star">✳</span></span></footer>
+  </body>
+</html>

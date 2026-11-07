@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <title>Anticipo de reserva — CanchaYA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/workflow.css">
+    <link rel="stylesheet" href="/CSS/pagos.css">
+    <script src="/JS/pago.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header workflow-header">
+      <a class="brand" href="/" aria-label="CanchaYA, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>cancha<span class="brand-accent">YA</span></span></a>
+      <span class="header-note"><span class="live-dot"></span> Último paso · Referencia de pago</span>
+    </header>
+    <main class="workflow-page payment-page">
+      <div class="eyebrow"><span class="eyebrow-line"></span> PASO 3 DE 3 · PAGO POR ADELANTADO</div>
+      <h1>Confirma tu <span>reserva.</span></h1>
+      <p class="workflow-lead">Realiza el pago del anticipo y adjunta la imagen de tu comprobante.</p>
+      <section class="workflow-summary" id="payment-summary" aria-live="polite">
+        <p class="loading-message">Cargando los detalles del pago...</p>
+      </section>
+      <p class="form-error" id="payment-error" role="alert" hidden></p>
+      <section class="payment-content" id="payment-content" hidden>
+        <div class="payment-details">
+          <div class="form-heading"><span class="section-kicker">DATOS PARA TRANSFERIR</span><h2>Cuenta del administrador</h2></div>
+          <dl class="bank-details" id="bank-details"></dl>
+          <div class="advance-card">
+            <span class="section-kicker">ANTICIPO · 25% DEL TOTAL</span>
+            <strong id="advance-amount"></strong>
+            <small id="exchange-rate"></small>
+          </div>
+        </div>
+        <form class="workflow-form payment-form" id="payment-form">
+          <label class="upload-field" for="payment-image">
+            <span class="upload-icon" aria-hidden="true">↑</span>
+            <strong>Adjunte Referencia de Pago</strong>
+            <span>Imagen PNG, JPG o WEBP (máximo 5 MB)</span>
+            <input id="payment-image" name="imagen" type="file" accept="image/png,image/jpeg,image/webp" required>
+          </label>
+          <p class="selected-file" id="selected-file" aria-live="polite"></p>
+          <button class="primary-button submit-payment" id="submit-payment" type="submit">Enviar referencia <span aria-hidden="true">→</span></button>
+        </form>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© 2026 CANCHAYA</span><span>MENOS COORDINAR. MÁS JUGAR.</span><span>HECHO PARA EL JUEGO <span class="footer-star">✳</span></span></footer>
+  </body>
+</html>

@@ -1,0 +1,4 @@
+node_modules/
+Back/Datos/Canchas/*.sqlite
+Back/Datos/Reservas/*.sqlite
+Back/Datos/Pagos/Referencias/
