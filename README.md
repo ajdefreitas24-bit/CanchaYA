@@ -93,12 +93,13 @@ Las tablas de cada parte están en `Back/Datos/<Parte>/*.sql`.
 npm test
 ```
 
-Corre cuatro archivos de prueba con bases temporales (no tocan la base real):
+Corre cinco archivos de prueba (16 pruebas) con bases temporales (no tocan la base real):
 
 - `Back/Logica/Complejos/registrar_complejo.test.js`: Registrar complejo.
 - `Back/Logica/Solicitudes/solicitudes.test.js`: Ver y Modificar solicitudes.
 - `Back/Logica/Horarios/agregar_horario.test.js`: Agregar cancha y Agregar horario.
 - `Back/Logica/Reservas/reservar_cancha.test.js`: búsqueda, disponibilidad, reserva, pago y cancelación.
+- `Back/Logica/Pantalla_principal/deportes.test.js`: dos pruebas por cada deporte (fútbol, basket, pádel, béisbol y tenis): el complejo se registra y agrega su cancha y su horario, y el jugador la busca, ve sus horas y las aparta.
 
 ## Reglas importantes
 
