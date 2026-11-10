@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <title>Solicitudes de complejos — CanchaYA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/workflow.css">
+    <script src="/JS/Pantalla_principal/api_cliente.js" defer></script>
+    <script src="/JS/Pantalla_principal/formato.js" defer></script>
+    <script src="/JS/Pantalla_principal/ventana_mensaje.js" defer></script>
+    <script src="/JS/Pantalla_principal/pagina.js" defer></script>
+    <!-- Modificar va antes porque Ver solicitudes la crea dentro de su constructor. -->
+    <script src="/JS/Solicitudes/modificar_solicitudes.js" defer></script>
+    <script src="/JS/Solicitudes/ver_solicitudes.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header workflow-header">
+      <a class="brand" href="/" aria-label="CanchaYA, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>cancha<span class="brand-accent">YA</span></span></a>
+      <div class="header-right">
+        <span class="header-note"><span class="live-dot"></span> Administrador de CanchaYA</span>
+        <button class="text-button" id="logout-button" type="button">Cerrar sesión</button>
+      </div>
+    </header>
+    <main class="workflow-page wide-page">
+      <div class="eyebrow"><span class="eyebrow-line"></span> ÁREA DEL ADMINISTRADOR</div>
+      <h1>Solicitudes de <span>complejos.</span></h1>
+      <p class="workflow-lead" id="requests-summary">Cargando las solicitudes…</p>
+      <p class="form-error" id="requests-error" role="alert" hidden></p>
+
+      <!-- Ver solicitudes: lista con las pendientes primero. -->
+      <section class="page-section" id="requests-section" aria-labelledby="requests-title">
+        <div class="section-title">
+          <h2 id="requests-title">Todas las solicitudes</h2>
+          <button class="text-button" id="refresh-requests" type="button">Actualizar</button>
+        </div>
+        <div class="request-list" id="requests-list" aria-live="polite"></div>
+      </section>
+
+      <!-- Detalle de una solicitud; si está pendiente, aparecen los botones de Modificar solicitudes. -->
+      <section class="page-section" id="request-detail" hidden aria-labelledby="request-detail-title">
+        <div class="section-title">
+          <h2 id="request-detail-title">Detalle de la solicitud</h2>
+          <button class="text-button" id="back-to-requests" type="button">← Volver a las solicitudes</button>
+        </div>
+        <article class="detail-card" id="request-detail-content"></article>
+        <div id="decision-section" hidden>
+          <label class="rejection-reason-field" id="rejection-reason-field" for="rejection-reason" hidden>
+            Motivo del rechazo (obligatorio)
+            <textarea id="rejection-reason" rows="4" maxlength="500" placeholder="Explica al dueño por qué no se aprueba el complejo."></textarea>
+            <small>El dueño verá este motivo cuando intente iniciar sesión.</small>
+          </label>
+          <p class="form-error" id="decision-error" role="alert" hidden></p>
+          <div class="request-actions">
+            <button class="secondary-button" id="reject-complex" type="button">Rechazar</button>
+            <button class="primary-button" id="approve-complex" type="button">Aprobar</button>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© 2026 CANCHAYA</span><span>MENOS COORDINAR. MÁS JUGAR.</span><span>HECHO PARA EL JUEGO <span class="footer-star">✳</span></span></footer>
+  </body>
+</html>
