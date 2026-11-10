@@ -10,9 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/styles.css">
     <link rel="stylesheet" href="/CSS/workflow.css">
-    <script src="/JS/reservar.js" defer></script>
+    <script src="/JS/Pantalla_principal/api_cliente.js" defer></script>
+    <script src="/JS/Pantalla_principal/formato.js" defer></script>
+    <script src="/JS/Pantalla_principal/ventana_mensaje.js" defer></script>
+    <script src="/JS/Pantalla_principal/pagina.js" defer></script>
+    <script src="/JS/Reservas/reservar.js" defer></script>
   </head>
   <body>
+    <!-- Paso intermedio: la reserva ya bloquea sus horas mientras se completan los datos. -->
     <header class="site-header workflow-header">
       <a class="brand" href="/" aria-label="CanchaYA, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>cancha<span class="brand-accent">YA</span></span></a>
       <span class="header-note"><span class="live-dot"></span> Tus horarios están apartados temporalmente</span>
@@ -22,9 +27,11 @@
       <div class="eyebrow"><span class="eyebrow-line"></span> PASO 2 DE 3 · DATOS DEL JUGADOR</div>
       <h1>Completa tu <span>reserva.</span></h1>
       <p class="workflow-lead">Déjanos tus datos para continuar con el pago del anticipo.</p>
+      <!-- El controlador carga aquí el resumen de la reserva temporal obtenida por URL. -->
       <section class="workflow-summary" id="reservation-summary" aria-live="polite">
         <p class="loading-message">Cargando los detalles de tus horarios...</p>
       </section>
+      <!-- La validación definitiva ocurre en el servidor; cada campo tiene un mensaje propio. -->
       <form class="workflow-form" id="reservation-form" novalidate>
         <div class="form-heading"><span class="section-kicker">INFORMACIÓN DE CONTACTO</span><h2>¿Quién organiza el partido?</h2></div>
         <div class="form-grid">
