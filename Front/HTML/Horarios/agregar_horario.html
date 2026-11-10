@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <title>Agregar horario — CanchaYA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/workflow.css">
+    <script src="/JS/Pantalla_principal/api_cliente.js" defer></script>
+    <script src="/JS/Pantalla_principal/formato.js" defer></script>
+    <script src="/JS/Pantalla_principal/ventana_mensaje.js" defer></script>
+    <script src="/JS/Pantalla_principal/pagina.js" defer></script>
+    <script src="/JS/Horarios/agregar_horario.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header workflow-header">
+      <a class="brand" href="/" aria-label="CanchaYA, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>cancha<span class="brand-accent">YA</span></span></a>
+      <button class="text-button" id="logout-button" type="button">Cerrar sesión</button>
+    </header>
+    <main class="workflow-page">
+      <a class="back-link" href="/">← Volver al panel de mi complejo</a>
+      <div class="eyebrow"><span class="eyebrow-line"></span> HORARIOS</div>
+      <h1>Agrega un <span>horario.</span></h1>
+      <p class="workflow-lead">Elige la cancha y el día, y marca desde qué hora hasta qué hora estará disponible para reservar.</p>
+
+      <p class="loading-message page-loading" id="schedule-loading" role="status">Buscando las canchas de tu complejo…</p>
+
+      <!-- Se muestra solo si el complejo tiene canchas. La validación la hace el servidor (por eso novalidate). -->
+      <form class="workflow-form" id="schedule-form" novalidate hidden>
+        <div class="form-heading"><span class="section-kicker">DATOS DEL HORARIO</span><h2>¿Cuándo se puede jugar?</h2></div>
+        <div class="form-grid">
+          <label class="form-field form-field-wide" for="canchaId">Cancha
+            <select id="canchaId" name="canchaId"></select>
+            <small class="field-error" data-error-de="canchaId" hidden></small>
+          </label>
+          <label class="form-field form-field-wide" for="fecha">Fecha
+            <input id="fecha" name="fecha" type="date">
+            <small class="field-error" data-error-de="fecha" hidden></small>
+          </label>
+          <label class="form-field" for="horaInicio">Hora de inicio
+            <select id="horaInicio" name="horaInicio"></select>
+            <small class="field-error" data-error-de="horaInicio" hidden></small>
+          </label>
+          <label class="form-field" for="horaFin">Hora de fin
+            <select id="horaFin" name="horaFin"></select>
+            <small class="field-error" data-error-de="horaFin" hidden></small>
+          </label>
+        </div>
+        <p class="form-error" id="overlap-message" role="alert" hidden></p>
+        <p class="form-error" id="schedule-error" role="alert" hidden></p>
+        <div class="form-actions">
+          <button class="secondary-button" id="cancel-schedule" type="button">Cancelar</button>
+          <button class="primary-button" id="save-schedule" type="submit">Guardar <span aria-hidden="true">→</span></button>
+        </div>
+      </form>
+    </main>
+    <footer class="site-footer"><span>© 2026 CANCHAYA</span><span>MENOS COORDINAR. MÁS JUGAR.</span><span>HECHO PARA EL JUEGO <span class="footer-star">✳</span></span></footer>
+  </body>
+</html>

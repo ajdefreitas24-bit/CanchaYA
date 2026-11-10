@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f7f2">
+    <title>Agregar cancha — CanchaYA</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/CSS/styles.css">
+    <link rel="stylesheet" href="/CSS/workflow.css">
+    <script src="/JS/Pantalla_principal/api_cliente.js" defer></script>
+    <script src="/JS/Pantalla_principal/formato.js" defer></script>
+    <script src="/JS/Pantalla_principal/ventana_mensaje.js" defer></script>
+    <script src="/JS/Pantalla_principal/pagina.js" defer></script>
+    <script src="/JS/Canchas/agregar_cancha.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header workflow-header">
+      <a class="brand" href="/" aria-label="CanchaYA, inicio"><span class="brand-mark" aria-hidden="true">C</span><span>cancha<span class="brand-accent">YA</span></span></a>
+      <button class="text-button" id="logout-button" type="button">Cerrar sesión</button>
+    </header>
+    <main class="workflow-page wide-page">
+      <a class="back-link" href="/">← Volver al panel de mi complejo</a>
+      <div class="eyebrow"><span class="eyebrow-line"></span> MIS CANCHAS</div>
+      <h1>Agrega una <span>cancha.</span></h1>
+      <p class="workflow-lead">Los jugadores verán la cancha en las búsquedas. Después agrégale horarios para que puedan reservarla.</p>
+
+      <!-- El mismo formulario sirve para publicar una cancha nueva o editar una existente. -->
+      <section class="page-section" aria-labelledby="court-form-title">
+        <div class="section-title"><h2 id="court-form-title">Datos de la cancha</h2></div>
+        <form class="court-form" id="court-form">
+          <label>Deporte
+            <select id="court-sport" name="deporteId" required></select>
+            <small>Solo aparecen los deportes que ofrece tu complejo.</small>
+          </label>
+          <label>Nombre de la cancha
+            <input id="court-name" name="nombre" type="text" minlength="2" maxlength="80" required>
+          </label>
+          <label>Sector o urbanización en Caracas
+            <select id="court-location" name="ubicacion" required></select>
+          </label>
+          <label>Capacidad de personas
+            <input id="court-capacity" name="capacidad" type="number" min="1" max="300" step="1" required>
+          </label>
+          <label>Precio por hora (USD)
+            <input id="court-price" name="precioPorHora" type="number" min="0.01" max="1000000" step="0.01" required>
+          </label>
+          <label class="court-photo-field">Foto de la cancha
+            <input id="court-photo" name="foto" type="file" accept="image/png,image/jpeg,image/webp" required>
+            <small>Imagen PNG, JPG o WEBP de máximo 5 MB.</small>
+            <img id="court-photo-preview" alt="Vista previa de la foto de la cancha" hidden>
+          </label>
+          <p class="form-error" id="court-form-error" role="alert" hidden></p>
+          <div class="court-form-actions">
+            <button class="secondary-button" id="cancel-court-edit" type="button" hidden>Cancelar edición</button>
+            <button class="primary-button" id="save-court" type="submit">Publicar cancha <span aria-hidden="true">→</span></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="page-section" aria-labelledby="complex-courts-title">
+        <div class="section-title"><h2 id="complex-courts-title">Canchas de mi complejo</h2></div>
+        <div class="request-list" id="complex-courts-list" aria-live="polite"></div>
+      </section>
+    </main>
+    <footer class="site-footer"><span>© 2026 CANCHAYA</span><span>MENOS COORDINAR. MÁS JUGAR.</span><span>HECHO PARA EL JUEGO <span class="footer-star">✳</span></span></footer>
+  </body>
+</html>
