@@ -29,3 +29,38 @@
   .form-actions .primary-button { margin-left: 0; }
   .form-actions button { min-height: 44px; }
 }
+
+/* ----- Páginas nuevas: agregar cancha, agregar horario, registrar complejo y solicitudes ----- */
+.wide-page { width: min(1050px, 88vw); }
+.page-section { margin-top: 32px; }
+.page-loading { margin-top: 24px; }
+.workflow-form { margin-top: 28px; padding: 24px; border: 1px solid var(--line); background: white; }
+.form-heading-next { margin-top: 28px; padding-top: 22px; border-top: 1px solid var(--line); }
+.form-field-wide { grid-column: 1 / -1; }
+.workflow-form .form-field { align-content: start; }
+.form-field select, .form-field textarea { width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid #dfe5dc; border-radius: 2px; background: white; color: var(--ink); font: 400 13px var(--font-body); }
+.form-field select:focus { border-color: #74957a; outline: 2px solid rgba(116, 149, 122, .16); }
+.form-field select[aria-invalid="true"] { border-color: #bf6255; }
+.field-hint { color: #87918a; font-size: 10px; font-weight: 400; }
+.choice-fieldset { margin: 0; padding: 14px; border: 1px solid #dfe5dc; }
+.choice-fieldset legend { padding: 0 6px; }
+.choice-fieldset .choice-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: 4px; }
+.form-note { margin: 22px 0 0; padding: 12px 14px; border-left: 3px solid #83a45d; background: #edf3e8; color: #426246; font-size: 11px; line-height: 1.6; }
+.detail-card { padding: 21px; border: 1px solid var(--line); background: white; }
+.detail-card h3 { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.status-label.pendiente { background: #fbf3df; color: #7a5a17; }
+.request-card .status-label { flex-shrink: 0; }
+
+/* Ventana de mensaje con botón OK / Aceptar (VentanaMensaje). */
+.message-backdrop { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 16px; background: rgba(23, 36, 29, .45); }
+.message-box { width: min(400px, 100%); padding: 30px 26px 24px; display: grid; justify-items: center; gap: 16px; border-radius: 8px; background: white; text-align: center; box-shadow: 0 24px 70px rgba(23, 36, 29, .25); }
+.message-box p { margin: 0; font: 700 18px/1.4 var(--font-display); letter-spacing: -.3px; }
+.message-icon { width: 52px; height: 52px; display: grid; place-items: center; border-radius: 50%; background: #edf3e9; color: var(--green); font: 800 24px var(--font-display); }
+.message-warning .message-icon { background: #fbf3df; color: #7a5a17; }
+.message-box .primary-button { min-width: 140px; margin: 0; }
+
+@media (max-width: 560px) {
+  .workflow-form { padding: 18px; }
+  .choice-fieldset .choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .request-card { flex-wrap: wrap; }
+}

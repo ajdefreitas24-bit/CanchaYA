@@ -10,9 +10,21 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/CSS/styles.css">
-    <script src="/JS/app.js" defer></script>
+    <!-- Clases comunes (Pantalla_principal) y luego una clase por historia. app.js va al final porque crea a todas. -->
+    <script src="/JS/Pantalla_principal/api_cliente.js" defer></script>
+    <script src="/JS/Pantalla_principal/formato.js" defer></script>
+    <script src="/JS/Pantalla_principal/vista.js" defer></script>
+    <script src="/JS/Pantalla_principal/buscador.js" defer></script>
+    <script src="/JS/Canchas/buscar_por_zona.js" defer></script>
+    <script src="/JS/Horarios/ver_horarios_disponibles.js" defer></script>
+    <script src="/JS/Reservas/reservar_cancha.js" defer></script>
+    <script src="/JS/Reservas/cancelar_reserva.js" defer></script>
+    <script src="/JS/Pagos/verificar_pago.js" defer></script>
+    <script src="/JS/Pantalla_principal/panel_complejo.js" defer></script>
+    <script src="/JS/Pantalla_principal/app.js" defer></script>
   </head>
   <body>
+    <!-- Encabezado global: marca, estado de sesión y acción para cerrar sesión. -->
     <header class="site-header">
       <a class="brand" href="/" aria-label="CanchaYA, inicio">
         <span class="brand-mark" aria-hidden="true">C</span>
@@ -20,11 +32,13 @@
       </a>
       <div class="header-right">
         <span class="header-note"><span class="live-dot"></span> Deporte, a tu manera</span>
-        <button class="text-button" id="home-button" type="button" hidden>Volver al inicio</button>
+        <span class="session-message" id="session-message" role="alert" hidden></span>
+        <button class="text-button" id="home-button" type="button" hidden>Cerrar sesión</button>
       </div>
     </header>
 
     <main>
+      <!-- Portada de autenticación; CanchaYAApp alterna el modo de acceso y registro. -->
       <section class="view landing-view" id="landing-view">
         <div class="landing-copy">
           <div class="eyebrow"><span class="eyebrow-line"></span> Juega más. Organiza menos.</div>
@@ -37,24 +51,39 @@
           </div>
         </div>
         <div class="role-panel">
-          <div class="panel-topline"><span>BIENVENIDO A CANCHAYA</span><span class="panel-index">01 / 02</span></div>
-          <h2>¿Cómo quieres<br>entrar?</h2>
-          <p class="panel-description">Elige tu perfil para continuar.</p>
-          <button class="role-card" id="player-entry" type="button">
-            <span class="role-icon player-icon" aria-hidden="true">↗</span>
-            <span class="role-copy"><strong>Entrar como jugador</strong><small>Encuentra tu cancha y arma el partido</small></span>
-            <span class="role-arrow" aria-hidden="true">→</span>
-          </button>
-          <button class="role-card" id="admin-entry" type="button">
-            <span class="role-icon admin-icon" aria-hidden="true">⌘</span>
-            <span class="role-copy"><strong>Entrar como administrador</strong><small>Gestiona tus espacios deportivos</small></span>
-            <span class="role-arrow" aria-hidden="true">→</span>
-          </button>
+          <div class="panel-topline"><span>BIENVENIDO A CANCHAYA</span><span class="panel-index">INICIA SESIÓN</span></div>
+          <h2 id="auth-title">Qué bueno<br>verte de nuevo.</h2>
+          <p class="panel-description" id="auth-description">Inicia sesión para continuar.</p>
+          <!-- Aquí entran jugadores, complejos aprobados y el administrador. Solo los jugadores crean su cuenta aquí. -->
+          <form class="auth-form" id="auth-form">
+            <label id="name-field" hidden>
+              Nombre
+              <input id="auth-name" name="nombre" type="text" autocomplete="name" minlength="2" maxlength="80">
+            </label>
+            <label>
+              Correo electrónico
+              <input id="auth-email" name="correo" type="email" autocomplete="email" maxlength="254" required>
+            </label>
+            <label>
+              Contraseña
+              <input id="auth-password" name="password" type="password" autocomplete="current-password" minlength="8" maxlength="128" required>
+            </label>
+            <p class="auth-message" id="auth-message" role="alert" hidden></p>
+            <button class="primary-button auth-submit" id="auth-submit" type="submit">Iniciar sesión <span aria-hidden="true">→</span></button>
+          </form>
+          <p class="auth-switch"><span id="auth-switch-label">¿Aún no tienes cuenta?</span> <button class="text-button" id="auth-switch" type="button">Crear cuenta</button></p>
+          <!-- Inicio del diagrama de Registrar complejo: opción «Registrar mi complejo» de la página principal. -->
+          <a class="complex-signup" id="register-complex" href="/HTML/Complejos/registrar_complejo.html">
+            <span class="complex-signup-icon" aria-hidden="true">⌂</span>
+            <span><strong>¿Tienes un complejo deportivo?</strong><small>Publica tus canchas en CanchaYA.</small></span>
+            <span class="complex-signup-action">Registrar mi complejo <span aria-hidden="true">→</span></span>
+          </a>
           <div class="panel-footnote"><span aria-hidden="true">✦</span> Un buen partido empieza con un buen lugar.</div>
         </div>
         <div class="landing-footer"><span>HECHO PARA QUIENES NO SE QUEDAN QUIETOS</span><span>CARACAS · VENEZUELA</span></div>
       </section>
 
+      <!-- Panel del jugador: inicia búsquedas y consulta reservas o notificaciones propias. -->
       <section class="view dashboard-view" id="player-view" hidden>
         <div class="dashboard-intro">
           <div class="eyebrow"><span class="eyebrow-line"></span> ÁREA DE JUGADOR</div>
@@ -71,17 +100,97 @@
           <button class="primary-button" id="open-booking" type="button">Buscar cancha <span aria-hidden="true">→</span></button>
         </div>
         <div class="dashboard-caption"><span class="live-dot"></span> <span id="catalog-summary">Deportes y canchas para tu próximo partido</span></div>
-      </section>
-
-      <section class="view dashboard-view admin-view" id="admin-view" hidden>
-        <div class="eyebrow"><span class="eyebrow-line"></span> ÁREA DE ADMINISTRADOR</div>
-        <h1>Hola, <span>administrador.</span></h1>
-        <div class="notice-card">
-          <span class="notice-icon" aria-hidden="true">⌘</span>
-          <div><h2>Esta área estará disponible pronto</h2><p>La gestión de complejos y canchas todavía no está habilitada.</p></div>
+        <div class="dashboard-links">
+          <button class="secondary-button" id="show-reservations" type="button">Ver reservaciones <span class="count-badge" id="reservation-count" hidden>0</span></button>
+          <button class="secondary-button" id="show-player-notifications" type="button">Notificaciones <span class="count-badge" id="player-notification-count" hidden>0</span></button>
         </div>
+        <!-- Estas listas se completan desde /api/jugador/* y se actualizan durante la sesión. -->
+        <section class="dashboard-list" id="player-reservations" hidden aria-labelledby="player-reservations-title">
+          <div class="section-title"><h2 id="player-reservations-title">Mis reservaciones</h2></div>
+          <div class="request-list" id="player-reservations-list"></div>
+        </section>
+        <section class="dashboard-list" id="player-notifications" hidden aria-labelledby="player-notifications-title">
+          <div class="section-title"><h2 id="player-notifications-title">Notificaciones de reservas</h2></div>
+          <div class="request-list" id="player-notifications-list" aria-live="polite"></div>
+        </section>
       </section>
 
+      <!-- Panel del complejo: accesos a sus canchas y horarios, pagos por revisar y reservas confirmadas. -->
+      <section class="view dashboard-view admin-view" id="admin-view" hidden>
+        <div class="eyebrow"><span class="eyebrow-line"></span> ÁREA DE COMPLEJO</div>
+        <h1>Hola, <span id="complex-name">complejo.</span></h1>
+        <div class="dashboard-card">
+          <span class="dashboard-card-icon" aria-hidden="true">⌘</span>
+          <div>
+            <span class="card-kicker">GESTIONA TUS RESERVAS</span>
+            <h2>Notificaciones de reservas</h2>
+            <p>Revisa las solicitudes nuevas y los avisos de reservaciones canceladas.</p>
+          </div>
+          <div class="dashboard-card-actions">
+            <button class="primary-button" id="open-requests" type="button">Ver notificaciones <span class="count-badge" id="request-count" hidden>0</span></button>
+            <button class="secondary-button" id="open-complex-reservations" type="button">Ver reservas <span class="count-badge" id="complex-reservation-count" hidden>0</span></button>
+          </div>
+        </div>
+        <p class="dashboard-caption"><span class="live-dot"></span> <span id="request-update-status" aria-live="polite">Las solicitudes nuevas aparecerán aquí.</span></p>
+        <!-- Bandeja de solicitudes pendientes y cancelaciones enviadas por jugadores. -->
+        <section class="dashboard-list" id="complex-requests" hidden aria-labelledby="complex-requests-title">
+          <div class="section-title">
+            <h2 id="complex-requests-title">Notificaciones del complejo</h2>
+            <button class="text-button" id="refresh-requests" type="button">Actualizar</button>
+          </div>
+          <div class="request-list" id="complex-requests-list" aria-live="polite"></div>
+        </section>
+        <section class="dashboard-list" id="complex-reservations" hidden aria-labelledby="complex-reservations-title">
+          <div class="section-title">
+            <h2 id="complex-reservations-title">Reservas de mis canchas</h2>
+            <button class="text-button" id="refresh-complex-reservations" type="button">Actualizar</button>
+          </div>
+          <div class="request-list" id="complex-reservations-list" aria-live="polite"></div>
+        </section>
+        <!-- Detalle temporal de una solicitud: datos del jugador, referencia y decisión. -->
+        <section class="dashboard-list request-detail" id="request-detail" hidden aria-labelledby="request-detail-title">
+          <div class="section-title">
+            <h2 id="request-detail-title">Detalle de la solicitud</h2>
+            <button class="text-button" id="back-to-requests" type="button">← Volver a solicitudes</button>
+          </div>
+          <article id="request-detail-content"></article>
+          <label class="rejection-reason-field" id="rejection-reason-field" for="rejection-reason" hidden>
+            Motivo del rechazo (obligatorio)
+            <textarea id="rejection-reason" rows="4" minlength="3" maxlength="500" placeholder="Explica al jugador por qué no se acepta la referencia."></textarea>
+            <small>El jugador podrá ver este motivo en sus notificaciones.</small>
+          </label>
+          <p class="request-feedback" id="request-feedback" role="status" hidden></p>
+          <div class="request-actions">
+            <button class="secondary-button" id="deny-request" type="button">Denegar reserva</button>
+            <button class="primary-button" id="approve-request" type="button">Confirmar reserva</button>
+          </div>
+        </section>
+        <!-- Accesos a las páginas de Agregar cancha y Agregar horario. -->
+        <div class="dashboard-card">
+          <span class="dashboard-card-icon" aria-hidden="true">＋</span>
+          <div>
+            <span class="card-kicker">AMPLÍA TU OFERTA</span>
+            <h2>Canchas</h2>
+            <p>Publica una cancha con su deporte, capacidad, precio y foto, o edita las que ya tienes.</p>
+          </div>
+          <a class="secondary-button" id="open-court-page" href="/HTML/Canchas/agregar_cancha.html">Agregar cancha</a>
+        </div>
+        <div class="dashboard-card">
+          <span class="dashboard-card-icon" aria-hidden="true">◷</span>
+          <div>
+            <span class="card-kicker">ABRE TU AGENDA</span>
+            <h2>Horarios</h2>
+            <p>Indica qué días y horas está disponible cada cancha para que los jugadores puedan reservar.</p>
+          </div>
+          <a class="secondary-button" id="open-schedule-page" href="/HTML/Horarios/agregar_horario.html">Agregar horario</a>
+        </div>
+        <section class="dashboard-list" id="complex-schedules" aria-labelledby="complex-schedules-title">
+          <div class="section-title"><h2 id="complex-schedules-title">Próximos horarios</h2></div>
+          <div class="request-list" id="complex-schedules-list" aria-live="polite"></div>
+        </section>
+      </section>
+
+      <!-- Buscador del jugador: búsqueda por deporte o por zona, sin mezclar ambos filtros. -->
       <section class="view booking-view" id="booking-view" hidden>
         <div class="booking-heading">
           <div>
@@ -93,7 +202,7 @@
         </div>
 
         <div class="step-indicator" aria-label="Pasos para consultar canchas">
-          <div class="step active" id="step-sport"><span>01</span> Deporte</div>
+          <div class="step active" id="step-sport"><span>01</span> Deporte o zona</div>
           <span class="step-connector"></span>
           <div class="step" id="step-court"><span>02</span> Cancha</div>
           <span class="step-connector"></span>
@@ -105,17 +214,33 @@
             <div><span class="section-kicker">PRIMERO LO PRIMERO</span><h2 id="sports-heading">¿Qué deporte te provoca?</h2></div>
             <span class="section-count" id="sport-count">Cargando...</span>
           </div>
+          <div class="search-mode" role="group" aria-label="Método de búsqueda">
+            <button class="search-mode-button selected" id="search-by-sport-mode" type="button" aria-pressed="true">Buscar por deporte</button>
+            <button class="search-mode-button" id="search-by-zone-mode" type="button" aria-pressed="false">Buscar por zona</button>
+          </div>
           <div class="sports-grid" id="sports-list" aria-live="polite"></div>
+          <!-- La zona se selecciona directamente y consulta el endpoint independiente por ubicación. -->
+          <form class="zone-search" id="zone-search" hidden>
+            <label for="zone-search-location">Selecciona una zona de Caracas</label>
+            <div class="zone-search-controls">
+              <select id="zone-search-location" required>
+                <option value="">Elige una zona</option>
+              </select>
+              <button class="primary-button" type="submit">Buscar canchas <span aria-hidden="true">→</span></button>
+            </div>
+          </form>
         </section>
 
+        <!-- Resultados de cancha según el método de búsqueda elegido. -->
         <section class="booking-section secondary-section" id="courts-section" hidden aria-labelledby="courts-heading">
           <div class="section-title">
             <div><span class="section-kicker">UN LUGAR PARA JUGAR</span><h2 id="courts-heading">Elige tu cancha</h2></div>
-            <button class="text-button" id="change-sport" type="button">← Cambiar deporte</button>
+            <button class="text-button" id="change-sport" type="button">← Cambiar búsqueda</button>
           </div>
           <div class="courts-grid" id="courts-list"></div>
         </section>
 
+        <!-- Calendario y horas disponibles; el servidor es la autoridad para confirmar horarios. -->
         <section class="booking-section details-section" id="details-section" hidden aria-labelledby="details-heading">
           <div class="section-title">
             <div><span class="section-kicker">DETALLES DE LA CANCHA</span><h2 id="details-heading">Escoge cuándo jugar</h2></div>

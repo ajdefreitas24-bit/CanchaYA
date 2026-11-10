@@ -1,0 +1,36 @@
+Que hace cada archivo de esta carpeta:
+
+Pantalla_principal (clases comunes):
+-api_cliente.js: clase ApiCliente. Habla con el servidor, agrega el token de la sesión y convierte los errores en mensajes.
+-formato.js: clase Formato. Fechas en español, bolívares y escaparHTML.
+-ventana_mensaje.js: clase VentanaMensaje. Muestra un mensaje con botón OK o Aceptar.
+-pagina.js: clase Pagina. Clase padre de las páginas con su propio HTML (revisa la sesión, muestra errores por campo, cierra sesión).
+-vista.js: clase Vista. Clase padre de las partes de la página principal.
+-buscador.js: clase BuscadorDeCanchas. Pasos del buscador, búsqueda por deporte y lista de canchas.
+-panel_complejo.js: clase PanelComplejoVista. Panel del complejo con sus próximos horarios.
+-app.js: clase CanchaYAApp. Inicio de sesión, crear cuenta de jugador y paneles; crea una vista por historia.
+
+Canchas:
+-agregar_cancha.js: Agregar cancha (página Canchas/agregar_cancha.html).
+-buscar_por_zona.js: Buscar por zona (en la página principal).
+
+Horarios:
+-agregar_horario.js: Agregar horario (página Horarios/agregar_horario.html), paso a paso con su diagrama.
+-ver_horarios_disponibles.js: Ver horarios disponibles (calendario y horas libres).
+
+Reservas:
+-reservar_cancha.js: Reservar cancha, primera parte (aparta las horas elegidas).
+-reservar.js: Reservar cancha, segunda parte (formulario de datos del jugador).
+-cancelar_reserva.js: Cancelar reserva (Ver reservaciones del jugador).
+
+Pagos:
+-pago.js: Pagar adelanto (muestra el 25 % y envía la referencia).
+-espera.js: espera la decisión del complejo y vuelve al inicio.
+-verificar_pago.js: el complejo revisa la referencia y confirma o deniega; el jugador ve sus notificaciones.
+
+Complejos:
+-registrar_complejo.js: Registrar complejo (página Complejos/registrar_complejo.html), paso a paso con su diagrama.
+
+Solicitudes:
+-ver_solicitudes.js: Ver solicitudes del administrador (página Solicitudes/solicitudes.html).
+-modificar_solicitudes.js: Modificar solicitudes (aprobar o rechazar con motivo).

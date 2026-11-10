@@ -25,6 +25,7 @@ button:focus-visible, a:focus-visible { outline: 3px solid #90b92f; outline-offs
 .brand-accent { color: var(--green); }
 .header-right { display: flex; align-items: center; gap: 24px; }
 .header-note, .dashboard-caption { display: flex; align-items: center; gap: 8px; color: #647169; font-size: 12px; }
+.session-message { color: #823f35; font-size: 11px; }
 .live-dot { width: 7px; height: 7px; border-radius: 50%; background: #75a952; display: inline-block; }
 .text-button { padding: 8px 0; border: 0; background: transparent; color: var(--green); font-size: 13px; font-weight: 700; cursor: pointer; }
 .text-button:hover { color: #47865a; }
@@ -47,6 +48,15 @@ h1, h2, h3, p { margin-top: 0; }
 .panel-index { color: #a4aca5; font-weight: 500; letter-spacing: .5px; }
 .role-panel h2 { margin: 31px 0 7px; font: 700 31px/1.2 var(--font-display); letter-spacing: -1.3px; }
 .panel-description { margin-bottom: 22px; color: var(--muted); font-size: 13px; }
+.auth-form { display: grid; gap: 14px; }
+.auth-form label { display: grid; gap: 6px; color: #5e6b62; font-size: 11px; font-weight: 600; }
+.auth-form label > small { color: #87918a; font-size: 10px; font-weight: 400; line-height: 1.5; }
+.auth-form input, .auth-form select { width: 100%; min-height: 43px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--ink); font: 400 12px var(--font-body); }
+.auth-form input:focus, .auth-form select:focus { outline: 2px solid #90b92f; outline-offset: 1px; border-color: #90b92f; }
+.auth-submit { width: 100%; margin-top: 3px; }
+.auth-switch { margin: 18px 0 0; color: var(--muted); font-size: 11px; text-align: center; }
+.auth-switch .text-button { padding: 0; font-size: inherit; }
+.auth-message { margin: 0; padding: 10px 12px; border-left: 3px solid #bf6255; background: #fff1ee; color: #823f35; font-size: 11px; line-height: 1.5; }
 .role-card { width: 100%; min-height: 77px; margin-top: 11px; padding: 12px 14px; display: flex; align-items: center; gap: 13px; border: 1px solid var(--line); border-radius: 5px; background: #fff; text-align: left; cursor: pointer; transition: border-color .2s, transform .2s, background .2s; }
 .role-card:hover { border-color: #9db8a1; background: #fbfcf9; transform: translateY(-2px); }
 .role-icon { width: 39px; height: 39px; display: grid; place-items: center; border-radius: 4px; font-size: 20px; }
@@ -64,6 +74,10 @@ h1, h2, h3, p { margin-top: 0; }
 .dashboard-view { min-height: calc(100vh - 138px); padding: 94px 0; }
 .dashboard-intro h1 { font-size: clamp(43px, 5vw, 60px); }
 .dashboard-card { margin-top: 55px; padding: 28px 30px; display: flex; align-items: center; gap: 24px; border: 1px solid var(--line); background: var(--white); }
+.dashboard-card + .dashboard-card { margin-top: 14px; }
+.dashboard-card-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 10px; }
+.dashboard-card-actions .primary-button { margin: 0; }
+.dashboard-card-actions .secondary-button { white-space: nowrap; }
 .dashboard-card-icon { width: 55px; height: 55px; display: grid; place-items: center; border-radius: 50%; background: #edf3e9; font-size: 26px; }
 .dashboard-card > div { flex: 1; }
 .card-kicker { font-size: 9px; }
@@ -79,6 +93,69 @@ h1, h2, h3, p { margin-top: 0; }
 .notice-icon { width: 43px; height: 43px; display: grid; place-items: center; background: #f2f1e9; color: #777b54; font-size: 22px; }
 .notice-card h2 { margin: 0 0 6px; font: 700 16px var(--font-display); }
 .notice-card p { margin: 0; color: var(--muted); font-size: 12px; }
+.dashboard-links { margin-top: 20px; display: flex; flex-wrap: wrap; gap: 10px; }
+.secondary-button { padding: 12px 15px; border: 1px solid #dfe5dc; border-radius: 3px; background: #fff; color: var(--green); font-size: 11px; font-weight: 700; cursor: pointer; }
+.secondary-button:hover { border-color: #9db8a1; background: #fbfcf9; }
+.count-badge { min-width: 20px; height: 20px; margin-left: 7px; padding: 0 6px; display: inline-grid; place-items: center; border-radius: 12px; background: var(--lime); color: var(--green-dark); font-size: 10px; }
+.dashboard-list { margin-top: 32px; padding-top: 24px; border-top: 1px solid var(--line); }
+.search-mode { margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.search-mode-button { padding: 10px 14px; border: 1px solid var(--line); background: white; color: #647168; font-size: 11px; font-weight: 700; cursor: pointer; }
+.search-mode-button.selected { border-color: #7c9c80; background: #f3f7ef; color: var(--green); }
+.zone-search { max-width: 560px; margin: 0 0 20px; padding: 18px; display: grid; gap: 10px; border: 1px solid var(--line); background: white; }
+.zone-search > label { color: #5e6b62; font-size: 11px; font-weight: 700; }
+.zone-search-controls { display: flex; flex-wrap: wrap; gap: 10px; }
+.zone-search-controls select { min-width: 220px; min-height: 42px; flex: 1; padding: 10px 12px; border: 1px solid var(--line); background: white; color: var(--ink); font: 400 12px var(--font-body); }
+.zone-search-controls .primary-button { margin: 0; }
+.court-form { padding: 22px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; background: #fff; border: 1px solid var(--line); }
+.court-form > label { display: grid; align-content: start; gap: 7px; color: #5e6b62; font-size: 11px; font-weight: 600; }
+.court-form input, .court-form select { width: 100%; min-height: 42px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 3px; background: #fff; color: var(--ink); font: 400 12px var(--font-body); }
+.court-form input:focus, .court-form select:focus { outline: 2px solid #90b92f; outline-offset: 1px; border-color: #90b92f; }
+.court-form label > small, .schedule-fieldset > small { color: #87918a; font-size: 10px; font-weight: 400; line-height: 1.5; }
+.schedule-fieldset { min-width: 0; margin: 0; padding: 15px; grid-column: 1 / -1; border: 1px solid var(--line); }
+.schedule-fieldset legend { padding: 0 6px; color: #5e6b62; font-size: 11px; font-weight: 700; }
+.choice-grid { margin-top: 10px; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.choice-option { min-height: 38px; padding: 8px; display: flex; align-items: center; gap: 7px; border: 1px solid var(--line); background: #fff; color: #56635a; font-size: 10px; cursor: pointer; }
+.choice-option:has(input:checked) { border-color: #7c9c80; background: #f3f7ef; color: var(--green); }
+.choice-option input { width: 14px; min-height: 14px; margin: 0; accent-color: var(--green); }
+.court-form-actions { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 10px; }
+.court-form-actions .primary-button { justify-self: start; margin: 0; }
+.court-photo-field { grid-column: 1 / -1; }
+.court-photo-field img { width: min(320px, 100%); max-height: 210px; object-fit: cover; border: 1px solid var(--line); }
+.court-thumbnail { width: 90px; height: 68px; object-fit: cover; }
+.edit-court-button { flex-shrink: 0; }
+.court-form .form-error { grid-column: 1 / -1; margin: 0; }
+.court-detail { cursor: default; }
+.court-detail:hover { box-shadow: none; transform: none; }
+.dashboard-list .section-title h2 { margin: 0; font: 700 20px var(--font-display); }
+.request-list { display: grid; gap: 10px; }
+.request-card { width: 100%; padding: 17px 19px; display: flex; align-items: center; gap: 16px; border: 1px solid var(--line); background: #fff; text-align: left; cursor: pointer; }
+.request-card:hover { border-color: #9db8a1; box-shadow: 0 5px 16px rgba(42, 75, 49, .06); }
+.request-card > div { flex: 1; display: grid; gap: 5px; }
+.request-card strong { font: 700 14px var(--font-display); }
+.request-card small, .request-card span { color: #78827b; font-size: 10px; }
+.request-card .request-arrow { color: var(--green); font-size: 18px; }
+.cancel-reservation-button { flex: 0 0 auto; color: #934a40; }
+.cancel-reservation-button:disabled { opacity: .6; cursor: wait; }
+.request-empty { margin: 0; padding: 19px; border: 1px solid var(--line); background: #fff; color: var(--muted); font-size: 12px; }
+.request-detail-content { padding: 21px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(220px, .75fr); gap: 22px; background: #fff; border: 1px solid var(--line); }
+.request-info { display: grid; align-content: start; gap: 15px; }
+.request-info h3 { margin: 0; font: 700 18px var(--font-display); }
+.request-info p { margin: 0; color: #657168; font-size: 12px; line-height: 1.65; }
+.request-info strong { color: var(--ink); }
+.reference-container { min-width: 0; min-height: 180px; display: grid; place-items: center; background: #f8f9f6; border: 1px solid var(--line); }
+.reference-preview { width: 100%; max-height: 420px; object-fit: contain; }
+.reference-loading { padding: 18px; color: var(--muted); font-size: 12px; line-height: 1.6; text-align: center; }
+.reference-loading.reference-error { color: #823f35; }
+.request-actions { margin-top: 16px; display: flex; justify-content: flex-end; gap: 10px; }
+.request-actions .primary-button { margin-left: 0; }
+.request-actions .secondary-button { color: #934a40; }
+.rejection-reason-field { margin-top: 16px; display: grid; gap: 8px; color: #5e6b62; font-size: 11px; font-weight: 700; }
+.rejection-reason-field textarea { width: 100%; min-height: 90px; padding: 11px 12px; border: 1px solid var(--line); border-radius: 3px; color: var(--ink); font: 400 12px/1.5 var(--font-body); resize: vertical; }
+.rejection-reason-field textarea:focus { outline: 2px solid #90b92f; outline-offset: 1px; border-color: #90b92f; }
+.rejection-reason-field small { color: #87918a; font-size: 10px; font-weight: 400; }
+.request-feedback { margin: 14px 0 0; padding: 12px 14px; background: #edf3e8; color: #426246; font-size: 12px; }
+.status-label { width: fit-content; padding: 5px 8px; border-radius: 2px; background: #edf3e8; color: var(--green); font-size: 9px; font-weight: 700; text-transform: uppercase; }
+.status-label.denegada { background: #fff1ee; color: #823f35; }
 
 .booking-view { padding: 58px 0 80px; }
 .booking-heading { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; }
@@ -110,6 +187,7 @@ h1, h2, h3, p { margin-top: 0; }
 .secondary-section, .details-section { margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--line); }
 .courts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .court-card { min-height: 195px; padding: 17px; display: flex; flex-direction: column; align-items: flex-start; border: 1px solid var(--line); background: white; text-align: left; cursor: pointer; transition: .18s ease; }
+.court-card-photo { width: calc(100% + 34px); height: 125px; margin: -17px -17px 15px; object-fit: cover; }
 .court-card:hover, .court-card.selected { border-color: #7c9c80; box-shadow: 0 5px 16px rgba(42, 75, 49, .07); transform: translateY(-2px); }
 .court-card-top { width: 100%; display: flex; align-items: center; justify-content: space-between; }
 .court-marker { color: #75955c; font-size: 16px; }
@@ -170,14 +248,26 @@ h1, h2, h3, p { margin-top: 0; }
   .landing-decoration { display: none; }
   .role-panel { padding: 26px 22px 22px; }
   .role-panel h2 { margin-top: 23px; }
+  .auth-form { gap: 12px; }
   .landing-footer { bottom: 20px; font-size: 7px; }
   .site-footer { padding: 0 6vw; font-size: 8px; }
   .site-footer span:nth-child(2) { display: none; }
   .dashboard-view { min-height: calc(100vh - 124px); padding: 65px 0; }
   .dashboard-card { padding: 20px; flex-wrap: wrap; gap: 14px; }
   .dashboard-card > div { min-width: calc(100% - 75px); }
+  .dashboard-card-actions { width: 100%; justify-content: flex-start; }
   .primary-button { margin-left: 69px; }
+  .court-form { grid-template-columns: 1fr; padding: 16px; }
+  .schedule-fieldset { grid-column: 1; }
+  .choice-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .court-form .form-error { grid-column: 1; }
+  .zone-search-controls { flex-direction: column; }
+  .zone-search-controls select { width: 100%; }
+  .cancel-reservation-button { width: 100%; }
   .admin-view { padding-top: 80px; }
+  .request-detail-content { grid-template-columns: 1fr; }
+  .request-actions { justify-content: stretch; }
+  .request-actions button { flex: 1; }
   .booking-view { padding-top: 38px; }
   .booking-stamp { display: none; }
   .step-indicator { gap: 8px; margin: 27px 0 35px; }
@@ -207,10 +297,29 @@ h1, h2, h3, p { margin-top: 0; }
   .sport-description { font-size: 9px; }
   .sport-arrow { top: 13px; right: 10px; }
   .court-card { padding: 12px; }
+  .court-card-photo { width: calc(100% + 24px); margin: -12px -12px 12px; }
+  .court-thumbnail { width: 65px; height: 55px; }
   .court-name { font-size: 14px; }
   .court-complex, .court-location { font-size: 9px; }
   .calendar-heading, .availability-heading { align-items: flex-start; flex-direction: column; }
   .availability-heading { gap: 8px; }
   .calendar-controls { align-self: flex-end; }
   .date-card strong { font-size: 15px; }
+}
+/* Enlaces con forma de botón y acceso a «Registrar mi complejo» en la portada. */
+a.primary-button, a.secondary-button { display: inline-block; text-decoration: none; white-space: nowrap; }
+.complex-signup { margin-top: 18px; padding: 13px 14px; display: flex; align-items: center; gap: 12px; border: 1px dashed #b9c9b5; border-radius: 5px; color: var(--ink); text-decoration: none; transition: border-color .2s, background .2s; }
+.complex-signup:hover { border-color: var(--green); background: #fbfcf9; }
+.complex-signup-icon { width: 34px; height: 34px; flex-shrink: 0; display: grid; place-items: center; border-radius: 4px; background: #f2f1e9; color: #777b54; font-size: 18px; }
+.complex-signup > span:nth-child(2) { flex: 1; display: grid; gap: 3px; }
+.complex-signup strong { font-size: 12px; }
+.complex-signup small { color: #818a83; font-size: 10px; }
+.complex-signup-action { color: var(--green); font-size: 11px; font-weight: 700; white-space: nowrap; }
+@media (max-width: 760px) {
+  .complex-signup { flex-wrap: wrap; }
+  .complex-signup-action { width: 100%; padding-left: 46px; }
+  .dashboard-card > a.secondary-button { margin-left: 69px; }
+}
+@media (max-width: 760px) {
+  .auth-submit { margin-left: 0; }
 }
