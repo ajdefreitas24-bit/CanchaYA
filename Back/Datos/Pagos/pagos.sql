@@ -1,9 +1,10 @@
--- La referencia de imagen queda guardada mientras el pago espera revisión del administrador.
+-- Una referencia por reserva. El archivo de imagen se guarda en disco y aquí se
+-- persiste su ruta relativa junto con los datos que muestra el panel del complejo.
 CREATE TABLE IF NOT EXISTS pagos (
-  reserva_id TEXT PRIMARY KEY REFERENCES reservas(id) ON DELETE CASCADE,
-  monto_bs REAL NOT NULL,
-  referencia_imagen TEXT NOT NULL,
-  nombre_archivo TEXT NOT NULL,
-  estado TEXT NOT NULL CHECK (estado IN ('confirmacion_pendiente')),
-  enviada_en TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+  reserva_id TEXT PRIMARY KEY REFERENCES reservas(id) ON DELETE CASCADE, -- Vincula pago y reserva.
+  monto_bs REAL NOT NULL, -- Anticipo informado al jugador.
+  referencia_imagen TEXT NOT NULL, -- Ruta relativa dentro del almacenamiento de referencias.
+  nombre_archivo TEXT NOT NULL, -- Nombre original saneado para mostrarlo.
+  estado TEXT NOT NULL CHECK (estado IN ('confirmacion_pendiente')), -- Etapa de revisión.
+  enviada_en TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP -- Ordena las solicitudes más recientes primero.
 );

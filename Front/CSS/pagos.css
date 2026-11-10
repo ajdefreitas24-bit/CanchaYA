@@ -21,8 +21,14 @@
 .selected-file { min-height: 16px; margin: 8px 0 0; color: #647169; font-size: 10px; overflow-wrap: anywhere; }
 .submit-payment { width: 100%; margin-top: 9px; }
 .waiting-page { min-height: 100vh; display: grid; place-items: center; padding: 24px; }
-.waiting-message { max-width: 650px; color: var(--ink); font: 600 clamp(20px, 4vw, 29px)/1.55 var(--font-display); letter-spacing: -.7px; text-align: center; }
+.waiting-card { width: min(620px, 100%); padding: 42px; display: grid; justify-items: center; gap: 16px; border: 1px solid var(--line); background: white; text-align: center; box-shadow: 0 20px 65px rgba(38, 57, 41, .055); }
+.waiting-icon { width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: #edf3e9; color: var(--green); font-size: 30px; }
+.waiting-card h1 { margin: 0; font: 700 clamp(24px, 4vw, 32px)/1.2 var(--font-display); letter-spacing: -.8px; }
+.waiting-message { max-width: 500px; margin: 0; color: var(--muted); font: 400 14px/1.7 var(--font-body); }
+.waiting-status { margin: 0; padding: 11px 15px; background: #f4f7f1; color: var(--green); font-size: 12px; }
+.waiting-card .secondary-button { margin-top: 3px; text-decoration: none; }
 @media (max-width: 650px) {
   .payment-content { grid-template-columns: 1fr; gap: 22px; }
   .upload-field { min-height: 160px; }
+  .waiting-card { padding: 30px 21px; }
 }
