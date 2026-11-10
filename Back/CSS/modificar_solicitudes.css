@@ -1,0 +1,28 @@
+.requests-view { padding: 58px 0 80px; }
+.requests-panel { padding: 24px; border: 1px solid var(--line); background: var(--white); }
+
+/* Caja scrolleable */
+.requests-list { max-height: 380px; padding: 12px; display: grid; align-content: start; gap: 12px; overflow-y: auto; border: 1px solid var(--line); background: var(--paper); }
+
+/* Cajas pequeñas */
+.request-card { padding: 16px; display: grid; gap: 12px; border: 1px solid var(--line); background: var(--white); }
+.request-card p { margin: 0; font-size: 14px; line-height: 1.6; }
+.request-card .selection-message,
+.request-card .error-message { margin: 0; }
+.request-data { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.request-card h3 { margin: 0 0 8px; font: 700 14px var(--font-display); color: var(--green); }
+.request-card dl { margin: 0; display: grid; gap: 4px; font-size: 13px; }
+.request-card dl div { display: flex; gap: 8px; }
+.request-card dt { flex: 0 0 72px; color: var(--muted); }
+.request-card dd { margin: 0; overflow-wrap: anywhere; }
+.request-card .request-description { color: var(--muted); font-size: 13px; }
+.request-actions { display: flex; gap: 10px; }
+.deny-button { padding: 13px 17px; border: 1px solid #d9b0a9; border-radius: 3px; background: var(--white); color: #823f35; font-size: 12px; font-weight: 700; cursor: pointer; }
+.deny-button:hover { background: #fff1ee; }
+
+/* Mensaje al denegar */
+.deny-form { display: grid; gap: 10px; }
+.deny-form textarea { width: 100%; min-height: 70px; padding: 10px; resize: vertical; border: 1px solid var(--line); border-radius: 3px; font: 13px var(--font-body); }
+
+/* Notificación de éxito (color heredado de .selection-message) */
+.toast { position: fixed; right: 20px; bottom: 20px; z-index: 10; max-width: calc(100vw - 40px); margin: 0; font-size: 13px; box-shadow: 0 8px 24px rgba(38, 57, 41, .15); }
