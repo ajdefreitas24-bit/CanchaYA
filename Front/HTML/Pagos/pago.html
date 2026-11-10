@@ -11,7 +11,11 @@
     <link rel="stylesheet" href="/CSS/styles.css">
     <link rel="stylesheet" href="/CSS/workflow.css">
     <link rel="stylesheet" href="/CSS/pagos.css">
-    <script src="/JS/pago.js" defer></script>
+    <script src="/JS/Pantalla_principal/api_cliente.js" defer></script>
+    <script src="/JS/Pantalla_principal/formato.js" defer></script>
+    <script src="/JS/Pantalla_principal/ventana_mensaje.js" defer></script>
+    <script src="/JS/Pantalla_principal/pagina.js" defer></script>
+    <script src="/JS/Pagos/pago.js" defer></script>
   </head>
   <body>
     <header class="site-header workflow-header">
@@ -22,10 +26,12 @@
       <div class="eyebrow"><span class="eyebrow-line"></span> PASO 3 DE 3 · PAGO POR ADELANTADO</div>
       <h1>Confirma tu <span>reserva.</span></h1>
       <p class="workflow-lead">Realiza el pago del anticipo y adjunta la imagen de tu comprobante.</p>
+      <!-- Resumen de cancha/horas y datos de transferencia se llenan desde la API. -->
       <section class="workflow-summary" id="payment-summary" aria-live="polite">
         <p class="loading-message">Cargando los detalles del pago...</p>
       </section>
       <p class="form-error" id="payment-error" role="alert" hidden></p>
+      <!-- El formulario queda oculto hasta confirmar que existe un pago pendiente. -->
       <section class="payment-content" id="payment-content" hidden>
         <div class="payment-details">
           <div class="form-heading"><span class="section-kicker">DATOS PARA TRANSFERIR</span><h2>Cuenta del administrador</h2></div>
@@ -36,6 +42,7 @@
             <small id="exchange-rate"></small>
           </div>
         </div>
+        <!-- Se envía una imagen de comprobante; el complejo decide luego si la acepta. -->
         <form class="workflow-form payment-form" id="payment-form">
           <label class="upload-field" for="payment-image">
             <span class="upload-icon" aria-hidden="true">↑</span>

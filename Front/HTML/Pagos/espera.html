@@ -11,8 +11,20 @@
     <link rel="stylesheet" href="/CSS/styles.css">
     <link rel="stylesheet" href="/CSS/workflow.css">
     <link rel="stylesheet" href="/CSS/pagos.css">
+    <script src="/JS/Pantalla_principal/api_cliente.js" defer></script>
+    <script src="/JS/Pantalla_principal/formato.js" defer></script>
+    <script src="/JS/Pantalla_principal/ventana_mensaje.js" defer></script>
+    <script src="/JS/Pantalla_principal/pagina.js" defer></script>
+    <script src="/JS/Pagos/espera.js" defer></script>
   </head>
   <body class="waiting-page">
-    <main class="waiting-message">Estamos esperando la confirmación de su pago, se le enviara un mensaje a su correo electrónico</main>
+    <!-- La pantalla consulta la API hasta una decisión y luego regresa al inicio del jugador. -->
+    <main class="waiting-card">
+      <span class="waiting-icon" aria-hidden="true">◷</span>
+      <h1 id="waiting-title">Referencia enviada</h1>
+      <p class="waiting-message" id="waiting-message">Estamos esperando que el complejo revise la referencia de pago. Esta página te llevará al inicio cuando se confirme o deniegue la reserva.</p>
+      <p class="waiting-status" id="waiting-status" role="status" aria-live="polite">Consultando el estado de la reserva…</p>
+      <a class="secondary-button" href="/">Volver al inicio</a>
+    </main>
   </body>
 </html>
